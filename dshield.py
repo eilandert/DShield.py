@@ -37,7 +37,7 @@ try:
 except ImportError:
     UseMySQLdb = "0"
 
-idstr = 'dshield.py v4.0 2019/05/27 Thijs Eilander <eilander@myguard.nl>'
+idstr = 'dshield.py v4.0 2019/05/27 Thijs Eilander https://github.com/eilandert/DShield.py'
 client = 'DShield.py'
 version = '4.0' 
 
