@@ -20,7 +20,6 @@ cd /etc/iptables/dshield
 #        compress
 #        postrotate
 #                /etc/iptables/dshield/logrotate.sh
-#                /usr/lib/rsyslog/rsyslog-rotate
 #        endscript
 #}
 

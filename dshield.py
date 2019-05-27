@@ -82,7 +82,7 @@ def main():
     rtmpname = tempfile.mktemp()
     rtmpfp = open(rtmpname, 'w')
 
-    subject = "FORMAT DSHIELD USERID %s TZ %s VERSION %s %s" % (options['userid'], options['timez'], client, version)
+    subject = "FORMAT DSHIELD USERID %s  TZ %s VERSION %s %s" % (options['userid'], options['timez'], client, version)
 
     time.clock()
 
@@ -607,7 +607,7 @@ def parse (rtmpfp, dbtmpfp):
     # which could potentially give us an erroneous match in the old code.
 
     if options['iptables'] != 'no':
-        iptre1 = re.compile(r'([A-Za-z]+) +(\d{1,2}) ([0-9:]{8}) [^ ]+ kernel: .{0,45}IN=[^ ]+ OUT=[^ ]* (MAC=[^ ]* )*SRC=([0-9.]+) DST=([0-9.]+).{0,45}PROTO=(.*)')
+        iptre1 = re.compile(r'([A-Za-z]+) +(\d{1,2}) ([0-9:]{8}) [^ ]+ kernel: .{0,32}IN=[^ ]+ OUT=[^ ]* (MAC=[^ ]* )*SRC=([0-9.]+) DST=([0-9.]+).{0,45}PROTO=(.*)$')
         iptre2u = re.compile(r'UDP SPT=(\d+) DPT=(\d+) ')
         iptre2t = re.compile(r'TCP SPT=(\d+) DPT=(\d{1,5}) WINDOW=\d{1,5} RES=0x[0-9A-Fa-f]+ (([A-Z]{3} )*)U')
         iptre2i = re.compile(r'ICMP TYPE=(\d+) CODE=(\d+) ')
