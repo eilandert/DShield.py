@@ -1,0 +1,29 @@
+  DShield.py now includes support for saving the results of parsing to
+a MySQL(TM) database. In order to use DShield.py with MySQL, the MySQLdb
+package is required. It can be downloaded from
+http://sourceforge.net/projects/mysql-python/. MySQL 3.23.49 or 4.0.2 or
+newer is a requirement. We only really support 4.x, but we have used it
+without problems with 3.23.x.
+  Included with this distribution is also an SQL statement file that
+can be read straight into MySQL (mysql -p < dshieldpy.sql) in order to
+create the database structure that DShield.py expects to find. The
+database name and structure are not configurable without modifying the
+source code. Obviously, the database needs to be set up either with the
+existing file or manually before running DShield.py with the database
+options enabled for the first time.
+  The MySQL username, password, and location are all configurable via the
+normal means. If no username is given, the Unix username of the user
+running DShield.py is assumed. Whatever the username, the user needs to have
+INSERT and SELECT privileges to the "attack" table in the DShieldpy
+database.  If no password is given, an empty password is used. The location
+can either be a Unix socket on the local machine, in which case the parameter
+to the dblocation option needs to be the full path to the socket, or an SQL
+server on a remote machine, in which case the dblocation needs to be specified
+as hostname[:port].
+  Additionally, we would LOVE to hear success stories. One of the authors
+wrote this because he has a need for it, but it would be good to know if
+other people are using it, too.
+
+MySQL is a trademark of MySQL AB. http://www.mysql.com/
+
+$Id: README.db,v 3.0.2.1 2003/03/24 20:06:07 arjones Exp $

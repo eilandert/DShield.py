@@ -1,0 +1,176 @@
+Legend: + Added, * Changed/improved, - Bugfix, ! Note, [] Note
+        added later, () Release date.
+
+4.0 (27 may 2019) Thijs Eilander (eilander@myguard.nl)
+    - Added date emailheader
+    - Changed regexps to work with current iptables logfile
+    - Fixed some other small things to make it work on Ubuntu 18.04
+    * Changed mailport to port 587 (submission)
+
+3.2 (7 June 2003)
+    - The script would crash if it could not resolve the name of a protocol
+      (i.e. socket.getprotobyname()). Unfortunately, this will always happen
+      on a standard Linux distribution if ESP or AH packets are logged.
+    * Full logging options for Netfilter are now dealt with properly (i.e.
+      --log-tcp-sequence and friends).
+
+3.1 (28 March 2003)
+    - Misinterpreted "count" field in DShield report format fixed. As a
+      result, the database format also needed to be changed.
+    * Type for the flags field in the database improved. Between the last
+      change and this one, there is a three byte savings per entry.
+    - Fixed a traceback when GPG returns an error and an encrypted file
+      doesn't exist
+    * Small doc changes
+
+3.0 (1 November 2002)
+    ! No changes from 3.0rc3
+
+3.0rc3 (18 September 2002)
+    - Long options from the config file were ignored
+    + Added MySQL database support
+    * Reincluded locale code, protected by hasattr()
+
+3.0rc2 (2 July 2002)
+    + Added support for Snort
+    + Added minimal support for locales
+    + Added options to disable using certain parsers
+    * Improved log parsing. It's faster now.
+    * Changed the log prefix to ignore for iptables to a config option
+    - Long options from the command line were ignored
+    - Fixed TCP flags parsing for iptables entries
+    - Fixed a bug wherein the sequence number is reset if a line to be
+      ignored comes between two identical lines
+    - In report(), LF -> CRLF
+    * Slightly better error checking when opening log file
+
+3.0rc1 (13 June 2002)
+    ! Most of these functions are only available with Python 2.2
+    + Added support for signing and encrypting submissions with GPG
+    + Added support for SSL/TLS to mail server
+    + Added support for authenticating to mail server
+    + Added use of SIZE SMTP verb
+    + Added a "User-Agent: DShield.py <version>" header to submissions
+    ! Okay, so that last change was gratuitous
+    * Improved some error checking and reporting
+    - copy will no longer send the submission to the mailto address twice
+    - Python 1.5.2 is supported again, but not for the new smtp options
+    * General cleanups, formatting and improving
+
+2.2 (May 1 2002)
+    + 'nat' option to 'un-nat' DST adresses.
+    * Updated default config file and documentation for 'nat' 
+      option.
+    * Minor comment changes      
+
+2.1.1 (Apr 17 2002)
+    - file() -> open()
+
+2.1 (Apr 17 2002)
+    - Added the 'HELO' step for SMTP.
+    * Updated documentation, Python 1.5.2 is not longer supported.
+
+2.0 (Apr 15 2002)
+    ! Yes, a version jump, read on to see why.        
+    * Other method to read the file (faster).
+    * More manual way to handle the mail sending.
+    * Send the report line for line to the SMTP server, not at
+      once.    
+    * Fixed/better parsing of TCP flags.
+    + Function to read VAL from VAR=VAL fields.
+    * Removed regexps where possible (speed!).
+    - Mail subject.
+    ! Aside from a few fixes, most changes are meant to make the
+      script is a _lot_ faster. I think it worked :)
+
+1.8.1 (Apr 2 2002)
+    - Typo... grrrr.
+
+1.8 (Apr 2 2002)
+    * Lines with an empty IN= will be skipped, because you
+      probably don't want to submit yourself.
+    * Only mention the date of the version with --verbose, not in
+      the subject of the report e-mail.
+    * Reformatted CHANGLOG.
+    + Release dates in CHANGELOG.
+
+1.7 (Mar 18 2002)
+    - GRE protocol (47) doesn't use SPT and DST.
+
+1.6 (Jan 7 2002)
+    - Seems that '01' _is_ bigger that '1' (stupid me :).
+
+1.5 (Dec 23 2001)
+    + Detect the turn of the year.
+    * Ability also 'ignore' subnets now (match parts of IPs).
+    * 'verbose' will also report the number of ignored lines.
+    
+1.4 (Dec 17 2001)
+    + 'ignore' option. Useful to ignore certain IPs used for
+      testing the fw.
+    - Setting the 'rotate' option with the command line fixed.
+
+1.3 (Dec 12 2001)
+    + Log rotation.
+    * Some options are now required and not set by default.
+    * --help output.
+    * Extra comments.
+    * Don't convert the protocol field (from number to text).
+    * New dshieldpy.conf files and changed README.
+
+1.2 (Dec 3 2001)
+    + IPCHAINS support! (Alright, it's in beta, but it's there :).
+
+1.1 (Dec 3 2001)
+    ! Never released, only in CVS.
+    ! Oooh... that damned 'copy' function...
+    - You won't recieve a copy by default anymore, as it should
+      be.
+
+1.0 (Nov 29 2001)
+    ! Time for a big release :).
+    * Removed silly comments, source should be readable anyway.
+    * Changed structure (by using defs).
+    ! It's now easy to implement parsing of different formats
+      (ipchains?).
+    * A lot of esthetic changes (mainly in strings).
+    - 'copy' bug fixed, you now _really_ get a copy :).
+    + 'verbose' option, outputs some (useful? :) information.
+    + Counts parsed lines and time doing that (for 'verbose').
+    + Automatically finds year and timezone.
+    + Also read the config file from $HOME.
+    + --version / -V option.
+    + Added (this) CHANGELOG file.
+    * Updated README and dshieldpy.conf file.
+
+0.6 (Nov 24 2001)
+    * Bcc didn't seem to work, replaced with 'copy' [broken too].
+    * Options are parsed cleaner and more 'fail safe'.
+    * .tgz => .tar.gz.
+
+0.5 (Nov 22 2001)
+    + Read options from command line and/or file.
+    + Get current version from CVS Id string.
+    * Some little esthetic changes in the code.
+    + Added a COPYING and README file.
+    + Packed everything in a nice .tgz.
+
+0.4 (Nov 18 2001)
+    ! Only in CVS, never released.
+    + Optional IP obfuscation.
+
+0.3 (Nov 12 2001)
+    * Compliant to Python 1.5.2.
+    * Using smtplib module for mailing instead.
+    * No longer save the report to a file first.
+    + Optionally Bcc the report to yourself [broken].
+    + Commented the source.
+
+0.2 (Nov 3 2001)
+    * Removed unneccesary 'RES' TCP flag.
+    - Stupid bug in splitting the log lines.
+
+0.1 (Oct 29 2001)
+    ! First release.
+    + Parse logfile to DShield format and safe to a file.
+    + Mail the parsed logfile to an address using 'mail'.
