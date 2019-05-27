@@ -10,7 +10,7 @@ I changed some things to make it work on recent linux (see CHANGELOG) and bumped
                 ... *sigh* documentating sucks :) ...
 
                             DShield.py
-                (http://dshieldpy.sourceforge.net)
+                
 
 
 {0} Table of Contents
@@ -292,7 +292,6 @@ Options:
  * -f, --file   <filename>    the firewall log that must be parsed
  * -m, --mailto <email>       use reports@dshield.org for actual submissions
    -u, --userid <id>          your DShield.org userid (number)
-
    -i, --ignore <ip, ip>      comma seperated list (string) of IPs to ignore
    -l, --logprefix <string>   ignore iptables entries with this string
        --iptables <yes|no>    enable/disable iptables parser
@@ -304,7 +303,6 @@ Options:
    -t, --timez  <timezone>    your timezone in the format +HH:MM or -HH:MM
    -y, --year   <year>        the current year (since it's not logged) as YYYY
    -c, --copy                 send the report also to yourself (set by --email)
-
    -s, --smtp   <host>        the SMTP server to use
        --tlskey <filename>    private key for SSL/TLS with mail server
        --tlscert <filename>   personal certificate for SSL/TLS with mail
@@ -317,7 +315,6 @@ Options:
    -k, --gpgkey <name>        name of GPG key (default=first key in ring)
    -p, --gpgpass <passphrase> passphrase to decrypt GPG key
                               (default=no passphrase)
-
        --usedb <yes|no>       additionally write the results to a database
                               (default=no)
        --dbuser <name>        username for accessing database.
@@ -326,13 +323,12 @@ Options:
                               (default=empty password)
        --dblocation <loc>     location of database.
                               (default=MySQL local default)
-
    -h, --help                 show this help
    -v, --verbose              show some stats
    -V, --version              show version info
 
 A '*' means this option has to be set.
-$
+
 
   Please keep in mind that you must use a string when setting the ignore or
 nat option. For example...
@@ -378,11 +374,10 @@ you use the 'rotate' options you'll have to point 'file' at the most recent
 logfile is rotated daily or weekly (daily is better). Snippet from my
 crontab:
 
--------------
 25 12   * * *   root    run-parts --report /etc/cron.daily
 47 12   * * 7   root    run-parts --report /etc/cron.weekly
 52 12   1 * *   root    run-parts --report /etc/cron.monthly
--------------
+
 
   Add a 'special' DShield.py line, since it must run just _after_ (10
 minutes?) the logfile is rotated. Since my /var/log/syslog gets rotated
