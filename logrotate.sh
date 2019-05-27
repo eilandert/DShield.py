@@ -8,7 +8,6 @@ cd /etc/iptables/dshield
 
 #
 # Include something like this in /etc/logrotate.d/syslog
-# Make sure logrotate is in the hourly crontab (it's not on ubuntu)
 
 #/var/log/kern.log
 #{
